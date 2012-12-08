@@ -1,0 +1,241 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"jquery",
+				"jquery	<script> (jQuery google ajax api)"
+			],
+			[
+				"jqu",
+				"jquery	<script> (jQuery google ajax api)"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"gis",
+				"Gist: Open Gist"
+			],
+			[
+				"gist",
+				"Gist: Open Gist"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"f",
+				"Fetch: Package"
+			],
+			[
+				"fet",
+				"Fetch: Manage"
+			],
+			[
+				"gisp",
+				"Gist: Create Public Gist"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 160.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/Instagram.coffee",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/functions.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/style.css",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/untitled.sublime-workspace",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/new.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/include/bootstrap.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/screenshot.png",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/static/common.css",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/Theme - Phoenix/Color Scheme/Tomorrow-Night -eighties.tmTheme",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/QuickThemes/QuickThemes.sublime-settings",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/User/QuickThemes.sublime-settings",
+		"/Users/bonstu/Desktop/sdddsadf/index.html",
+		"/Users/bonstu/Desktop/Sublime Text 2/Settings/Auto Save Session.sublime_session",
+		"/Users/bonstu/Desktop/Sublime Text 2/Settings/Session.sublime_session",
+		"/Users/bonstu/Desktop/Sublime Text 2/Settings/SideBarEnhancements.json",
+		"/Users/bonstu/Desktop/sdddsadf/validate.js",
+		"/Users/bonstu/Desktop/tes/el.js",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/live/index.html",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/User/Fetch.sublime-settings",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/live/hello.js",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Douban-Bookshelf/asset/js/libs/douban.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Douban-Bookshelf/index.php",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/test.php",
+		"/Users/bonstu/goagent/local/proxy.ini",
+		"/Users/bonstu/Desktop/test/hello.js",
+		"/Users/bonstu/Desktop/test/hello.coffee"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"line",
+			"313131",
+			"212121",
+			"999999",
+			"212121",
+			"191919",
+			"super",
+			"sid",
+			"body",
+			"scriptj",
+			"LiveReload",
+			"sea",
+			"seajs",
+			"body",
+			"hello",
+			"'",
+			"hello",
+			"side"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 136.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"d",
+				"asset/js/libs/douban.js"
+			],
+			[
+				"main",
+				"assets/main/src/main.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": false,
+	"side_bar_visible": true,
+	"side_bar_width": 201.0,
+	"status_bar_visible": true
+}
