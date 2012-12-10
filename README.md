@@ -11,7 +11,7 @@ Integrate sdk with your application
 <script src="instagram-js-sdk.min.js"></script>
 ```
 
-create a new instance of Instagram object
+Create a new instance of Instagram object
 
 ```javascript
 var IG = new Instagram();
@@ -39,6 +39,7 @@ IG.setToken( token );
 ```
 
 ##API LIST 
+[Details](https://github.com/bryantchan/Instagram-JS-SDK/blob/master/docs/api-list.md)
 `fn: callback function`  
 `Params: object of params that customize the request defined by instagram apis`  
 `Basic params: count, max_id, min_id`  
@@ -49,7 +50,7 @@ IG.setToken( token );
  - searchTag( fn, [params]( http://instagram.com/developer/endpoints/tags/#get_tags_search ) )  
  - searchLocation( fn, [params]( http://instagram.com/developer/endpoints/locations/#get_locations_search ) )  
 
-`Current user`  
+`Current User`  
  - getFeeds( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_feed ) )  
  - getLikes( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_feed_liked ) )  
  - getReqs( fn ) 
