@@ -15,7 +15,7 @@ Integrate sdk with your application
 create a new instance of Instagram object
 
 ```javascript
-var IG = new Instagram();
+var IG = new Instagram(  );
 ```
 
 Handle authorize
@@ -28,13 +28,13 @@ var param = {
     response_type: 'token'
 }
 
-IG.auth( param ); //then will go to the authorize page
+IG.auth(  param  ); //then will go to the authorize page
 
-//handle the callback token
-var token = IG.getToken();
+//handle the fn token
+var token = IG.getToken(  );
 
 //you need to set token before you use it
-IG.setToken( token );
+IG.setToken(  token  );
 
 //you code...
 ```
@@ -44,58 +44,58 @@ IG.setToken( token );
 `Basic params: count, max_id, min_id`  
 
 `Search`  
- - searchUser(callback, [params](http://instagram.com/developer/endpoints/users/#get_users_search))  
- - searchPhoto(callback, [params](http://instagram.com/developer/endpoints/media/#get_media_search))  
- - searchTag(callback, [params](http://instagram.com/developer/endpoints/tags/#get_tags_search))  
- - searchLocation(callback, [params](http://instagram.com/developer/endpoints/locations/#get_locations_search))  
+ - searchUser( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_search ) )  
+ - searchPhoto( fn, [params]( http://instagram.com/developer/endpoints/media/#get_media_search ) )  
+ - searchTag( fn, [params]( http://instagram.com/developer/endpoints/tags/#get_tags_search ) )  
+ - searchLocation( fn, [params]( http://instagram.com/developer/endpoints/locations/#get_locations_search ) )  
 
 `Current user`  
- - getFeeds(callback, [params](http://instagram.com/developer/endpoints/users/#get_users_feed))  
- - getLikes(callback, [params](http://instagram.com/developer/endpoints/users/#get_users_feed_liked))  
- - getReqs(callback) 
+ - getFeeds( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_feed ) )  
+ - getLikes( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_feed_liked ) )  
+ - getReqs( fn ) 
 
 `User`  
- - getUser(uid, callback)  
- - getPhotos(uid, callback, [params](http://instagram.com/developer/endpoints/users/#get_users_media_recent))  
- - getFollowing(uid, callback)  
- - getFans(uid, callback)  
+ - getUser( uid, fn )  
+ - getPhotos( uid, fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_media_recent ) )  
+ - getFollowing( uid, fn )  
+ - getFans( uid, fn )  
  
 `Relationship`  
- - getRelationship(uid, callback)  
- - isPrivate(uid, callback)  
- - isFollowing(uid, callback)  
- - isFollowedBy(uid, callback)  
- - follow(uid, callback)  
- - unfollow(uid, callback)  
- - block(uid, callback)  
- - unblock(uid, callback)  
- - approve(uid, callback)  
- - deny(uid, callback)  
+ - getRelationship( uid, fn )  
+ - isPrivate( uid, fn )  
+ - isFollowing( uid, fn )  
+ - isFollowedBy( uid, fn )  
+ - follow( uid, fn )  
+ - unfollow( uid, fn )  
+ - block( uid, fn )  
+ - unblock( uid, fn )  
+ - approve( uid, fn )  
+ - deny( uid, fn )  
  
 
 `Media`  
- - getPhoto(pid, callback, params)  
- - getPopular(callback, params)  
+ - getPhoto( pid, fn, params )  
+ - getPopular( fn, params )  
 
 `Comments`  
- - getComments(pid, callback, params)  
- - postComment(pid, callback, [params](http://instagram.com/developer/endpoints/comments/#post_media_comments))  
- - deleteComment(pid, callback)  
+ - getComments( pid, fn, params )  
+ - postComment( pid, fn, [params]( http://instagram.com/developer/endpoints/comments/#post_media_comments ) )  
+ - deleteComment( pid, fn )  
  
 `Likes`  
- - getLikes(pid, callback, params)  
- - addLike(pid, callback)  
- - deleteLike(pid, callback)  
+ - getLikes( pid, fn, params )  
+ - addLike( pid, fn )  
+ - deleteLike( pid, fn )  
 
 `Tags`  
- - getTag(tagName, callback, params)  
- - getRecentTags(tagName, callback, [params](http://instagram.com/developer/endpoints/tags/#get_tags_media_recent))  
+ - getTag( tagName, fn, params )  
+ - getRecentTags( tagName, fn, [params]( http://instagram.com/developer/endpoints/tags/#get_tags_media_recent ) )  
  
 `Locations`  
- - getLocation(locId, callback, params)  
- - getRecentLocations(locId, callback, [params](http://instagram.com/developer/endpoints/locations/#get_locations_media_recent))  
+ - getLocation( locId, fn, params )  
+ - getRecentLocations( locId, fn, [params]( http://instagram.com/developer/endpoints/locations/#get_locations_media_recent ) )  
 
 `Geography`
-    - getNearBy(geoId, callback, [params](http://instagram.com/developer/endpoints/geographies/#get_geographies_media_recent))
+    - getNearBy( geoId, fn, [params]( http://instagram.com/developer/endpoints/geographies/#get_geographies_media_recent ) )
 ```
 [CoffeeScript]: http://coffeescript.org/
