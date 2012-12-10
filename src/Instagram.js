@@ -28,7 +28,7 @@
       return this.token = token;
     };
 
-    Instagram.prototype.fetch = function(url, params, method) {
+    Instagram.prototype.fetch = function(url, callback, params, method) {
       var data;
       data = {
         access_token: this.token
@@ -38,16 +38,16 @@
       return $.ajax({
         url: this.api + url,
         type: method || 'GET',
-        data: $.extend(data, params.data),
+        data: $.extend(data, params.data || {}),
         dataType: 'jsonp',
         success: function(res) {
-          return params.callback(res);
+          return callback(res);
         }
       });
     };
 
-    Instagram.prototype.getFeeds = function(params) {
-      return this.fetch('/users/self/feed', params);
+    Instagram.prototype.getFeeds = function(callback, params) {
+      return this.fetch('/users/self/feed', callback, params);
     };
 
     Instagram.prototype.getLikes = function(params) {

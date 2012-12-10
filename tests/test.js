@@ -6,7 +6,7 @@
   param = {
     client_id: '32226e2c48af49b38109d816616a5369',
     redirect_uri: 'http://localhost/xampp/projects/Instagram-JS-SDK/examples',
-    scrope: 'basic+comments+relationships+likes',
+    scope: 'basic+comments+relationships+likes',
     response_type: 'token'
   };
   ig = new Instagram();

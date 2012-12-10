@@ -30,48 +30,43 @@
 		setToken: (token) ->
 			@token = token
 
-		fetch: ( url, params, method ) ->
+		fetch: ( url, callback, params, method ) ->
 			data = 
 				access_token: @token
-
-			console.log params
-			console.log method
 			$.ajax(
 				url: @api + url
 				type: method || 'GET'
-				data: $.extend data, params.data
+				data: $.extend data, params || {}
 				dataType: 'jsonp'
 				success: (res) ->
-					params.callback res
+					callback res
 			)
 
-		# apis
 		#Current User#
-		#params: @count, @min_id, @max_id
-		getFeeds: (params) ->
-			@fetch '/users/self/feed', params
+		getFeeds: (callback, params) ->
+			@fetch '/users/self/feed', callback, params
 
-		getLikes: (params) ->
-			@fetch '/users/self/media/liked', params	
+		getLikes: (callback, params) ->
+			@fetch '/users/self/media/liked', callback, params	
 		
-		getReqs: (callback) ->
-			@fetch '/users/self/requested-by', {callback: callback}
+		getReqs: (callback, params) ->
+			@fetch '/users/self/requested-by', callback
 
 		#User#
 		getUser: (id, callback) ->
-			@fetch '/users/' + id, {callback: callback}
+			@fetch '/users/' + id, callback
 
-		getPhotos: (params) ->
-			@fetch '/users/' + params.id + '/media/recent', params	
+		getPhotos: (id, callback, params) ->
+			@fetch '/users/' + id + '/media/recent', callback, params	
 
-		getFollows: (params) ->
-			@fetch '/users/' + params.id + '/follows', params
+		getFollowing: (id, callback, params) ->
+			@fetch '/users/' + id + '/follows', callback, params
 
-		getFans: (params) ->
-			@fetch '/users/' + params.id + '/followed-by', params
+		getFans: (id, callback, params) ->
+			@fetch '/users/' + id + '/followed-by', callback, params
 
 		getRelationship: (id, callback) ->
-			@fetch '/users/' + id + '/relationship', {callback: callback}
+			@fetch '/users/' + id + '/relationship', callback
 
 		isPrivate: (id, callback) ->
 			@getRelationship id, (res) ->
@@ -85,83 +80,82 @@
 			@getRelationship id, (res) ->
 				callback res.data.incoming_status != 'none'
 
-		editRelationship: (id, params, method) ->
-			@fetch '/users/' + id + '/relationship', params, method
+		editRelationship: (id, callback, action) ->
+			@fetch '/users/' + id + '/relationship', callback, {action: action}, 'POST'
 
 		follow: (id, callback) ->
-			@editRelationship id, {callback: callback, data: {action: 'follow'} }, 'POST'
+			@editRelationship id, callback, 'follow'
 
 		unfollow: (id, callback) ->
-			@editRelationship id, {callback: callback, data: {action: 'unfollow'} }, 'POST'
+			@editRelationship id, callback, 'unfollow'
 
 		block: (id, callback) ->
-			@editRelationship id, {callback: callback, data: {action: 'block'} }, 'POST'
+			@editRelationship id, callback, 'block'
 
 		unblock: (id, callback) ->
-			@editRelationship id, {callback: callback, data: {action: 'unblock'} }, 'POST'
+			@editRelationship id, callback, 'unblock'
 
 		approve: (id, callback) ->
-			@editRelationship id, {callback: callback, data: {action: 'approve'} }, 'POST'
+			@editRelationship id, callback, 'approve'
 
 		deny: (id, callback) ->
-			@editRelationship id, {callback: callback, data: {action: 'deny'} }, 'POST'
+			@editRelationship id, callback, 'deny'
 
-		searchUser: (params) ->
-			@fetch '/users/search', params
+		searchUser: (callback, params) ->
+			@fetch '/users/search', callback, params
 
 		#media#
-		getPhoto: (id, callback) ->
-			@fetch '/media/' + id, {callback: callback}
+		getPhoto: (id, callback, params) ->
+			@fetch '/media/' + id, callback, params
 
-		searchPhoto: (params) ->
-			@fetch '/media/search', params
+		searchPhoto: (callback, params) ->
+			@fetch '/media/search', callback, params
 		
-		getPopular: (callback) ->
-			@fetch '/media/popular', {callback: callback}
+		getPopular: (callback, params) ->
+			@fetch '/media/popular', callback, params
 
 		#comment#
-		getPhotoComments: (id, callback) ->
-			@fetch '/media/' + id + '/comments', {callback: callback}
+		getPhotoComments: (id, callback, params) ->
+			@fetch '/media/' + id + '/comments', callback, params
 
-		postComment: (params) ->
-			@fetch '/media/' + params.id + '/comments', params.data, 'POST'
+		postComment: (id, callback, params) ->
+			@fetch '/media/' + id + '/comments',callback, params, 'POST'
 
 		deleteComment: (id, callback) ->
-			@fetch '/media/' + id + '/comments', {callback: callback}, 'DELETE'
+			@fetch '/media/' + id + '/comments', callback, {}, 'DELETE'
 
 		#like#
-		getPhotoLikes: (id, callback) ->
-			@fetch '/media/' + id + '/likes', {callback: callback}
+		getPhotoLikes: (id, callback, params) ->
+			@fetch '/media/' + id + '/likes', callback, params
 
 		postLike: (id, callback) ->
-			@fetch '/media/' + id + '/likes', {callback: callback}, 'POST'
+			@fetch '/media/' + id + '/likes', callback, {}, 'POST'
 
 		deleteLike: (id, callback) ->
-			@fetch '/media/' + id + '/likes', {callback: callback}, 'DELETE'
+			@fetch '/media/' + id + '/likes', callback, {}, 'DELETE'
 
 		#tags#
-		getTag: (tagName, callback) ->
-			@fetch '/tags/' + tagName, {callback: callback}
+		getTag: (tagName, callback, params) ->
+			@fetch '/tags/' + tagName, callback, params
 
-		getRecentTags: (params) ->
-			@fetch '/tags/' + params.id + '/media/recent', params.data
+		getRecentTags: (tagName, callback, params) ->
+			@fetch '/tags/' + tagName + '/media/recent', callback, params
 
-		searchTag: (q, callback) ->
-			@fetch '/tags/search', {callback: callback}
-
+		searchTag: (callback, params) ->
+			@fetch '/tags/search', callback, params
 		#location#
-		getLoc: (locId, callback) ->
-			@fetch '/locations/' + locId, {callback: callback}
+		getLoc: (locId, callback, params) ->
+			@fetch '/locations/' + locId, callback, params
 
-		getRecentLoc: (params) ->
-			@fetch '/locations/' + params.id + '/media/recent', params.data
+		getRecentLoc: (locId, callback, params) ->
+			@fetch '/locations/' + locId + '/media/recent', callback, params
 
-		searchLoc: (q, callback) ->
-			@fetch '/locations/search', {callback: callback}
+		searchLoc: (callback, locId, callback, params) ->
+			@fetch '/locations/search', callback, params
 
 		#geographies#
-		getNearby: (id, callback) ->
-			@fetch '/geographies/' + id + '/media/recent', {callback: callback}
+		getNearby: (id, callback, params) ->
+			@fetch '/geographies/' + id + '/media/recent', callback, params
 
 	exports.Instagram = Instagram
 
