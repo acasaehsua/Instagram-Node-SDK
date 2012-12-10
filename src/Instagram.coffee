@@ -49,7 +49,7 @@
 		getLikes: (callback, params) ->
 			@fetch '/users/self/media/liked', callback, params	
 		
-		getReqs: (callback, params) ->
+		getReqs: (callback) ->
 			@fetch '/users/self/requested-by', callback
 
 		#User#
@@ -59,10 +59,10 @@
 		getPhotos: (id, callback, params) ->
 			@fetch '/users/' + id + '/media/recent', callback, params	
 
-		getFollowing: (id, callback, params) ->
+		getFollowing: (id, callback) ->
 			@fetch '/users/' + id + '/follows', callback, params
 
-		getFans: (id, callback, params) ->
+		getFans: (id, callback) ->
 			@fetch '/users/' + id + '/followed-by', callback, params
 
 		getRelationship: (id, callback) ->
@@ -115,7 +115,7 @@
 			@fetch '/media/popular', callback, params
 
 		#comment#
-		getPhotoComments: (id, callback, params) ->
+		getComments: (id, callback, params) ->
 			@fetch '/media/' + id + '/comments', callback, params
 
 		postComment: (id, callback, params) ->
@@ -125,10 +125,10 @@
 			@fetch '/media/' + id + '/comments', callback, {}, 'DELETE'
 
 		#like#
-		getPhotoLikes: (id, callback, params) ->
+		getLikes: (id, callback, params) ->
 			@fetch '/media/' + id + '/likes', callback, params
 
-		postLike: (id, callback) ->
+		addLike: (id, callback) ->
 			@fetch '/media/' + id + '/likes', callback, {}, 'POST'
 
 		deleteLike: (id, callback) ->
@@ -144,13 +144,13 @@
 		searchTag: (callback, params) ->
 			@fetch '/tags/search', callback, params
 		#location#
-		getLoc: (locId, callback, params) ->
+		getLocation: (locId, callback, params) ->
 			@fetch '/locations/' + locId, callback, params
 
-		getRecentLoc: (locId, callback, params) ->
+		getRecentLocations: (locId, callback, params) ->
 			@fetch '/locations/' + locId + '/media/recent', callback, params
 
-		searchLoc: (callback, locId, callback, params) ->
+		searchLocation: (callback, params) ->
 			@fetch '/locations/search', callback, params
 
 		#geographies#
