@@ -4,17 +4,19 @@
   var Instagram;
   Instagram = (function() {
 
-    function Instagram(options) {
+    Instagram.prototype.api = 'https://api.instagram.com/v1';
+
+    Instagram.prototype.endPoint = 'https://instagram.com/oauth/authorize/?';
+
+    function Instagram() {}
+
+    Instagram.prototype.auth = function(options) {
       var params;
-      this.endPoint = 'https://instagram.com/oauth/authorize/?';
       params = '';
       $.each(options, function(key, value) {
         return params += key + '=' + value + '&';
       });
       this.authUri = this.endPoint + params;
-    }
-
-    Instagram.prototype.auth = function() {
       return window.location.href = this.authUri;
     };
 
@@ -22,10 +24,232 @@
       return window.location.hash.replace('#access_token=', '');
     };
 
-    Instagram.prototype.fetch = function(url, params) {};
+    Instagram.prototype.setToken = function(token) {
+      return this.token = token;
+    };
 
-    Instagram.prototype.test = function(o) {
-      return console.log(o);
+    Instagram.prototype.fetch = function(url, params, method) {
+      var data;
+      data = {
+        access_token: this.token
+      };
+      console.log(params);
+      console.log(method);
+      return $.ajax({
+        url: this.api + url,
+        type: method || 'GET',
+        data: $.extend(data, params.data),
+        dataType: 'jsonp',
+        success: function(res) {
+          return params.callback(res);
+        }
+      });
+    };
+
+    Instagram.prototype.getFeeds = function(params) {
+      return this.fetch('/users/self/feed', params);
+    };
+
+    Instagram.prototype.getLikes = function(params) {
+      return this.fetch('/users/self/media/liked', params);
+    };
+
+    Instagram.prototype.getReqs = function(callback) {
+      return this.fetch('/users/self/requested-by', {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.getUser = function(id, callback) {
+      return this.fetch('/users/' + id, {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.getPhotos = function(params) {
+      return this.fetch('/users/' + params.id + '/media/recent', params);
+    };
+
+    Instagram.prototype.getFollows = function(params) {
+      return this.fetch('/users/' + params.id + '/follows', params);
+    };
+
+    Instagram.prototype.getFans = function(params) {
+      return this.fetch('/users/' + params.id + '/followed-by', params);
+    };
+
+    Instagram.prototype.getRelationship = function(id, callback) {
+      return this.fetch('/users/' + id + '/relationship', {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.isPrivate = function(id, callback) {
+      return this.getRelationship(id, function(res) {
+        return callback(res.data.target_user_is_private);
+      });
+    };
+
+    Instagram.prototype.isFollowing = function(id, callback) {
+      return this.getRelationship(id, function(res) {
+        return callback(res.data.outgoing_status === 'follows');
+      });
+    };
+
+    Instagram.prototype.isFollowedBy = function(id, callback) {
+      return this.getRelationship(id, function(res) {
+        return callback(res.data.incoming_status !== 'none');
+      });
+    };
+
+    Instagram.prototype.editRelationship = function(id, params, method) {
+      return this.fetch('/users/' + id + '/relationship', params, method);
+    };
+
+    Instagram.prototype.follow = function(id, callback) {
+      return this.editRelationship(id, {
+        callback: callback,
+        data: {
+          action: 'follow'
+        }
+      }, 'POST');
+    };
+
+    Instagram.prototype.unfollow = function(id, callback) {
+      return this.editRelationship(id, {
+        callback: callback,
+        data: {
+          action: 'unfollow'
+        }
+      }, 'POST');
+    };
+
+    Instagram.prototype.block = function(id, callback) {
+      return this.editRelationship(id, {
+        callback: callback,
+        data: {
+          action: 'block'
+        }
+      }, 'POST');
+    };
+
+    Instagram.prototype.unblock = function(id, callback) {
+      return this.editRelationship(id, {
+        callback: callback,
+        data: {
+          action: 'unblock'
+        }
+      }, 'POST');
+    };
+
+    Instagram.prototype.approve = function(id, callback) {
+      return this.editRelationship(id, {
+        callback: callback,
+        data: {
+          action: 'approve'
+        }
+      }, 'POST');
+    };
+
+    Instagram.prototype.deny = function(id, callback) {
+      return this.editRelationship(id, {
+        callback: callback,
+        data: {
+          action: 'deny'
+        }
+      }, 'POST');
+    };
+
+    Instagram.prototype.searchUser = function(params) {
+      return this.fetch('/users/search', params);
+    };
+
+    Instagram.prototype.getPhoto = function(id, callback) {
+      return this.fetch('/media/' + id, {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.searchPhoto = function(params) {
+      return this.fetch('/media/search', params);
+    };
+
+    Instagram.prototype.getPopular = function(callback) {
+      return this.fetch('/media/popular', {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.getPhotoComments = function(id, callback) {
+      return this.fetch('/media/' + id + '/comments', {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.postComment = function(params) {
+      return this.fetch('/media/' + params.id + '/comments', params.data, 'POST');
+    };
+
+    Instagram.prototype.deleteComment = function(id, callback) {
+      return this.fetch('/media/' + id + '/comments', {
+        callback: callback
+      }, 'DELETE');
+    };
+
+    Instagram.prototype.getPhotoLikes = function(id, callback) {
+      return this.fetch('/media/' + id + '/likes', {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.postLike = function(id, callback) {
+      return this.fetch('/media/' + id + '/likes', {
+        callback: callback
+      }, 'POST');
+    };
+
+    Instagram.prototype.deleteLike = function(id, callback) {
+      return this.fetch('/media/' + id + '/likes', {
+        callback: callback
+      }, 'DELETE');
+    };
+
+    Instagram.prototype.getTag = function(tagName, callback) {
+      return this.fetch('/tags/' + tagName, {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.getRecentTags = function(params) {
+      return this.fetch('/tags/' + params.id + '/media/recent', params.data);
+    };
+
+    Instagram.prototype.searchTag = function(q, callback) {
+      return this.fetch('/tags/search', {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.getLoc = function(locId, callback) {
+      return this.fetch('/locations/' + locId, {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.getRecentLoc = function(params) {
+      return this.fetch('/locations/' + params.id + '/media/recent', params.data);
+    };
+
+    Instagram.prototype.searchLoc = function(q, callback) {
+      return this.fetch('/locations/search', {
+        callback: callback
+      });
+    };
+
+    Instagram.prototype.getNearby = function(id, callback) {
+      return this.fetch('/geographies/' + id + '/media/recent', {
+        callback: callback
+      });
     };
 
     return Instagram;

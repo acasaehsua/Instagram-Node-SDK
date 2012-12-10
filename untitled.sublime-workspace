@@ -80,6 +80,10 @@
 	},
 	"file_history":
 	[
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/src/Instagram.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/tests/test.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/tests/test.coffee",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/src/Instagram.coffee",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/Instagram.coffee",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/functions.php",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/style.css",
@@ -128,6 +132,33 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fn",
+			"getCurrentgetFeeds",
+			"UserFeed ",
+			"getFeeds",
+			"getUser",
+			"getCurrentUserFeed",
+			"users",
+			"api",
+			"method",
+			"getUser",
+			"fn",
+			"obj.",
+			"params",
+			"data",
+			"type",
+			"obj",
+			"userGetById",
+			"hello",
+			"parent",
+			"apiEnd",
+			"reso",
+			"test",
+			"ig",
+			"test",
+			"a6a557833e75443ab06c9250e47b5524",
+			"examples",
+			"options",
 			"line",
 			"313131",
 			"212121",
@@ -166,6 +197,21 @@
 			"sheets":
 			[
 			]
+		},
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
 		}
 	],
 	"incremental_find":
@@ -185,16 +231,36 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.610015154682,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
+			0.493164960902,
 			1.0
 		]
 	},
@@ -202,6 +268,10 @@
 	"output.exec":
 	{
 		"height": 136.0
+	},
+	"output.sftp":
+	{
+		"height": 142.0
 	},
 	"replace":
 	{
@@ -213,6 +283,30 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"test",
+				"tests/test.js"
+			],
+			[
+				"ins",
+				"src/Instagram.js"
+			],
+			[
+				"tes",
+				"tests/test.coffee"
+			],
+			[
+				"test.js",
+				"tests/test.js"
+			],
+			[
+				"in",
+				"src/Instagram.js"
+			],
+			[
+				"tst",
+				"tests/test.coffee"
+			],
 			[
 				"d",
 				"asset/js/libs/douban.js"
@@ -232,10 +326,10 @@
 		],
 		"width": 380.0
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": false,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 201.0,
 	"status_bar_visible": true
 }
