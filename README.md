@@ -39,7 +39,7 @@ IG.setToken( token );
 ```
 
 ##API LIST 
-[Details](https://github.com/bryantchan/Instagram-JS-SDK/blob/master/docs/api-list.md)
+[Details](https://github.com/bryantchan/Instagram-JS-SDK/blob/master/docs/api-list.md)  
 `fn: callback function`  
 `Params: object of params that customize the request defined by instagram apis`  
 `Basic params: count, max_id, min_id`  
