@@ -1,5 +1,5 @@
 #JS SDK FOR INSTAGRAM APIs
-This simple sdk is written in [CoffeeScript] for front-end developers to build applications with instagram apis easily. `The script is based on jquery`
+This simple sdk written in [CoffeeScript] is for front-end developers to build applications with instagram apis easily. `The script is based on jquery`
 
 ##Usage
 
