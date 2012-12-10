@@ -100,5 +100,9 @@ IG.setToken( token );
  - getNearBy( geoId, fn, [params]( http://instagram.com/developer/endpoints/geographies/#get_geographies_media_recent ) )  
 
 ##Todo
+ - error handling
+ - remove jquery dependency
+ - ajax module
+ - object extend module
  
 [CoffeeScript]: http://coffeescript.org/
