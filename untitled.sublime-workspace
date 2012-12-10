@@ -19,9 +19,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 307.0,
 		"selected_items":
 		[
+			[
+				"INS",
+				"Package Control: Install Package"
+			],
 			[
 				"ins",
 				"Package Control: Install Package"
@@ -80,14 +84,20 @@
 	},
 	"file_history":
 	[
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/src/instagram-js-sdk.min.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/README.md",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/src/instagram-js-sdk.coffee",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/examples/index.html",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/src/Instagram.coffee",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/src/Instagram.js",
+		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/docs/api-list.md",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/User/SideBarEnhancements/Open With/Side Bar.sublime-menu",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/tests/test.js",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/tests/test.coffee",
-		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/src/Instagram.coffee",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/Instagram-JS-SDK/Instagram.coffee",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/functions.php",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/style.css",
-		"/Users/bonstu/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/untitled.sublime-workspace",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/new.js",
 		"/Applications/XAMPP/xamppfiles/htdocs/xampp/projects/igface/wp-content/themes/igface/include/bootstrap.php",
@@ -132,6 +142,44 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Instagram",
+			"callback",
+			")",
+			"(",
+			"params",
+			"params.",
+			"params",
+			"callback",
+			"params",
+			"callback",
+			"method",
+			"POST",
+			"method",
+			"POST",
+			"follow",
+			"params",
+			"{},",
+			"{callback: callback}\n",
+			"{callback: callback}",
+			"params",
+			"locId",
+			"params",
+			"tagName",
+			"params",
+			"callback",
+			"params",
+			"callback",
+			"params",
+			"callback",
+			"params",
+			"getUser",
+			"getReqs",
+			"getLikes",
+			"getPhotos",
+			"getUser",
+			"getReqs",
+			"seamonkey",
+			"SeaMonkey",
 			"fn",
 			"getCurrentgetFeeds",
 			"UserFeed ",
@@ -184,6 +232,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"fn",
+			" )",
+			"( "
 		],
 		"reverse": false,
 		"show_context": true,
@@ -193,21 +244,6 @@
 	},
 	"groups":
 	[
-		{
-			"sheets":
-			[
-			]
-		},
-		{
-			"sheets":
-			[
-			]
-		},
-		{
-			"sheets":
-			[
-			]
-		},
 		{
 			"sheets":
 			[
@@ -231,36 +267,16 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
-			],
-			[
-				0,
-				1,
-				1,
-				2
-			],
-			[
-				1,
-				1,
-				2,
-				2
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.610015154682,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.493164960902,
 			1.0
 		]
 	},
@@ -275,7 +291,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -283,6 +299,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"in",
+				"src/Instagram.js"
+			],
+			[
+				"rea",
+				"README.md"
+			],
 			[
 				"test",
 				"tests/test.js"
@@ -298,10 +322,6 @@
 			[
 				"test.js",
 				"tests/test.js"
-			],
-			[
-				"in",
-				"src/Instagram.js"
 			],
 			[
 				"tst",
@@ -329,7 +349,7 @@
 	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": false,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 201.0,
 	"status_bar_visible": true
 }

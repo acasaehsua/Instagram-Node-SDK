@@ -8,7 +8,7 @@ Integrate sdk with your application
 
 ```javascript
 <script src="jquery.js"></script>
-<script src="instagram.min.js"></script>
+<script src="instagram-js-sdk.min.js"></script>
 ```
 
 create a new instance of Instagram object
@@ -96,6 +96,8 @@ IG.setToken(  token  );
  - getRecentLocations( locId, fn, [params]( http://instagram.com/developer/endpoints/locations/#get_locations_media_recent ) )  
 
 `Geography`  
-    - getNearBy( geoId, fn, [params]( http://instagram.com/developer/endpoints/geographies/#get_geographies_media_recent ) )  
+ - getNearBy( geoId, fn, [params]( http://instagram.com/developer/endpoints/geographies/#get_geographies_media_recent ) )  
 
+##Todo
+ 
 [CoffeeScript]: http://coffeescript.org/
