@@ -14,26 +14,26 @@ Integrate sdk with your application
 create a new instance of Instagram object
 
 ```javascript
-var IG = new Instagram(  );
+var IG = new Instagram();
 ```
 
 Handle authorize
 ```javascript
 
 var param = {
-    client_id: YOUR_CLIENT_ID,
-    redirect_uri: YOUR_REDIRECT_URI,
-    scope: YOUR_SCOPE,
+    client_id    : YOUR_CLIENT_ID,
+    redirect_uri : YOUR_REDIRECT_URI,
+    scope        : YOUR_SCOPE,
     response_type: 'token'
 }
 
-IG.auth(  param  ); //then will go to the authorize page
+IG.auth( param ); //then will go to the authorize page
 
 //handle the fn token
-var token = IG.getToken(  );
+var token = IG.getToken();
 
 //you need to set token before you use it
-IG.setToken(  token  );
+IG.setToken( token );
 
 //you code...
 ```
