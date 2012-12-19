@@ -10,11 +10,11 @@
     response_type: 'token'
   };
   ig = new Instagram();
-  if (window.location.hash) {
-    ig.setToken(ig.getToken());
-  }
+  ig.setOptions({
+    client_id: '32226e2c48af49b38109d816616a5369'
+  });
   return $('button').click(function() {
-    return ig.getPopular(function(res) {
+    return ig.isPrivate(5112145, function(res) {
       return console.log(res);
     });
   });

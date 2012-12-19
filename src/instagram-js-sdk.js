@@ -24,14 +24,19 @@
       return window.location.hash.replace('#access_token=', '');
     };
 
-    Instagram.prototype.setToken = function(token) {
-      return this.token = token;
+    Instagram.prototype.setOptions = function(options) {
+      var self;
+      self = this;
+      return $.each(options, function(key, value) {
+        return self[key] = value;
+      });
     };
 
     Instagram.prototype.fetch = function(url, callback, params, method) {
       var data;
       data = {
-        access_token: this.token
+        access_token: this.token || '',
+        client_id: this.client_id
       };
       return $.ajax({
         url: this.api + url,
@@ -39,9 +44,22 @@
         data: $.extend(data, params || {}),
         dataType: 'jsonp',
         success: function(res) {
+          var code;
+          code = res.meta.code;
+          switch (code) {
+            case '200':
+              callback(res.data);
+              break;
+            case '400':
+              console.log;
+          }
           return callback(res);
         }
       });
+    };
+
+    Instagram.prototype.currentUser = function(callback) {
+      return this.fetch('/users/self', callback);
     };
 
     Instagram.prototype.getFeeds = function(callback, params) {
@@ -54,6 +72,22 @@
 
     Instagram.prototype.getReqs = function(callback) {
       return this.fetch('/users/self/requested-by', callback);
+    };
+
+    Instagram.prototype.getIdByName = function(name, callback) {
+      return this.searchUser(name, function(res) {
+        var lists, obj;
+        lists = res.data;
+        name = name.toLowerCase();
+        if (lists) {
+          obj = lists[0];
+        }
+        if (obj && obj['username'] === name) {
+          return callback(obj['id']);
+        } else {
+          return callback(false);
+        }
+      });
     };
 
     Instagram.prototype.getUser = function(id, callback) {
@@ -77,8 +111,8 @@
     };
 
     Instagram.prototype.isPrivate = function(id, callback) {
-      return this.getRelationship(id, function(res) {
-        return callback(res.data.target_user_is_private);
+      return this.getUser(id, function(res) {
+        return callback(res.meta.error_message === 'you cannot view this resource');
       });
     };
 
@@ -124,8 +158,8 @@
       return this.editRelationship(id, callback, 'deny');
     };
 
-    Instagram.prototype.searchUser = function(callback, params) {
-      return this.fetch('/users/search', callback, params);
+    Instagram.prototype.searchUser = function(q, callback) {
+      return this.fetch('/users/search?q=' + q, callback);
     };
 
     Instagram.prototype.getPhoto = function(id, callback, params) {

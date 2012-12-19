@@ -1,4 +1,4 @@
-# Version: 1.0 
+# Version: 2.0 
 #
 # Description: This is an unofficial javascript sdk for instagram sdk.
 # 
@@ -6,38 +6,34 @@
 # 
 # Contact: bryantandk@gmail.com (@bryantandk)
 # 
-# 2012-12-08
+# 2012-12-16
 
 ( ($, exports) ->
 
 	class Instagram
 		api: 'https://api.instagram.com/v1'
 
-		endPoint: 'https://instagram.com/oauth/authorize/?'
+		auth: 'https://instagram.com/oauth/authorize/?'
 
-		constructor: (  )-> 
-			
+		constructor: -> 
+
 		auth: ( options ) ->	
 			params = ''
 			$.each options, (key, value) ->
 				params += (key + '=' + value + '&')
 
-			@authUri = @endPoint + params
+			@authUri = @auth + params
 			window.location.href = @authUri
 
 		getToken: ->
 			return window.location.hash.replace '#access_token=', ''
 
-		setOptions: (options) ->
-			self = @
-			$.each options, (key, value) ->
-				self[key] = value
+		setToken: (token) ->
+			@token = token
 
 		fetch: ( url, callback, params, method ) ->
 			data = 
-				access_token: @token || ''
-				client_id: @client_id
-
+				access_token: @token
 			$.ajax(
 				url: @api + url
 				type: method || 'GET'
@@ -65,15 +61,6 @@
 			@fetch '/users/self/requested-by', callback
 
 		#User#
-		getIdByName: (name, callback) -> 
-			@searchUser name, (res) ->
-				lists = res.data
-				name = name.toLowerCase()
-				obj = lists[0] if lists
-				if obj and obj['username'] is name
-					callback obj['id']
-				else
-					callback false
 		getUser: (id, callback) ->
 			@fetch '/users/' + id, callback
 
@@ -90,8 +77,8 @@
 			@fetch '/users/' + id + '/relationship', callback
 
 		isPrivate: (id, callback) ->
-			@getUser id, (res) ->
-				callback res.meta.error_message is 'you cannot view this resource' 
+			@getRelationship id, (res) ->
+				callback res.data.target_user_is_private 
 
 		isFollowing: (id, callback) ->
 			@getRelationship id, (res) ->
@@ -122,8 +109,8 @@
 		deny: (id, callback) ->
 			@editRelationship id, callback, 'deny'
 
-		searchUser: (q, callback) ->
-			@fetch '/users/search?q=' + q, callback
+		searchUser: (callback, params) ->
+			@fetch '/users/search', callback, params
 
 		#media#
 		getPhoto: (id, callback, params) ->
