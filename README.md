@@ -33,7 +33,14 @@ IG.auth( param ); //then will go to the authorize page
 var token = IG.getToken();
 
 //you need to set token before you use it
-IG.setToken( token );
+IG.setOptions( {
+    token: token
+} );
+
+//or without using token 
+IG.setOptions({
+    client_id: your_client_id
+})
 
 //you code...
 ```
@@ -45,15 +52,17 @@ IG.setToken( token );
 `Basic params: count, max_id, min_id`  
 
 `Search`  
- - searchUser( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_search ) )  
+ - searchUser( q, fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_search ) )  
  - searchPhoto( fn, [params]( http://instagram.com/developer/endpoints/media/#get_media_search ) )  
  - searchTag( fn, [params]( http://instagram.com/developer/endpoints/tags/#get_tags_search ) )  
  - searchLocation( fn, [params]( http://instagram.com/developer/endpoints/locations/#get_locations_search ) )  
 
 `Current User`  
+ - currentUser(fn) //return the basic info about the current auth user
  - getFeeds( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_feed ) )  
  - getLikes( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_feed_liked ) )  
  - getReqs( fn ) 
+ - getIdByName(name, fn)  //return the user id or false if the user doesn't exist.
 
 `User`  
  - getUser( uid, fn )  
