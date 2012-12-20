@@ -2,19 +2,38 @@
 
 	Instagram = require.Instagram
 
-	param = 
-		client_id: '32226e2c48af49b38109d816616a5369'
-		redirect_uri: 'http://localhost/xampp/projects/Instagram-JS-SDK/examples'
-		scope: 'basic+comments+relationships+likes'
-		response_type: 'token'
+	store = 
+		get: (key) ->
+			return window.localStorage.getItem(key)
+		set: (key, val) ->
+			return window.localStorage.setItem(key, val)
+		clear: ->
+			return window.localStorage.clear()
+		remove: (key) ->
+			return window.localStorage.removeItem(key)
 
 	ig = new Instagram()
 
-	ig.setOptions
-		client_id: '32226e2c48af49b38109d816616a5369'
+	if window.location.hash
+		token = ig.getToken()
+		store.set 'ig_token', token
 
-	# 1047392
+	if not store.get 'ig_token'
+		param = 
+			client_id: '86be0f75fa034c38adfba93d660f2a80'
+			redirect_uri: 'http://localhost/xampp/projects/Instagram-JS-SDK/examples'
+			scope: 'basic+comments+relationships+likes'
+			response_type: 'token'
+		ig.auth param
+
+
+	ig.setOptions
+		token: store.get 'ig_token'
+
+	# 237062958
 	$('button').click ->
-		ig.isPrivate 5112145, (res) ->
+		ig.follow 237062958, (res) ->
 			console.log res
+
+
 ) jQuery, window

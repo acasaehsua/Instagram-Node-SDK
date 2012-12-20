@@ -102,7 +102,7 @@
 				callback res.data.incoming_status != 'none'
 
 		editRelationship: (id, callback, action) ->
-			@fetch '/users/' + id + '/relationship', callback, {action: action}, 'POST'
+			@fetch '/users/' + id + '/relationship', callback, {ACTION: action}, 'POST'
 
 		follow: (id, callback) ->
 			@editRelationship id, callback, 'follow'
