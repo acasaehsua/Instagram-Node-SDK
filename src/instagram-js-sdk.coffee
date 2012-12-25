@@ -11,7 +11,7 @@
 ( ($, exports) ->
 
 	class Instagram
-		api: 'https://api.instagram.com/v1'
+		api: 'http://bonstu.com/projects/igsdk/ajax.php'
 
 		endPoint: 'https://instagram.com/oauth/authorize/?'
 
@@ -34,22 +34,30 @@
 				self[key] = value
 
 		fetch: ( url, callback, params, method ) ->
-			data = 
-				access_token: @token || ''
-				client_id: @client_id
+			data = {}
+			if @token
+				data['access_token'] = @token
+			if @client_id
+				data['client_id'] = @client_id
 
-			$.ajax(
-				url: @api + url
-				type: method || 'GET'
-				data: $.extend data, params || {}
-				dataType: 'jsonp'
+			ajaxData =
+				url: @api
+				type: 'POST'
+				dataType: 'json'
+				data: 
+					method: method || 'GET'
+					url: url
+					params: $.extend {}, data, params
 				success: (res) ->
-					code = res.meta.code
+					console.log res
+					code = res.result.meta.code
 					switch code
 						when '200' then callback res.data
 						when '400' then console.log
-					callback res
-			)
+					callback res.result
+			console.log ajaxData
+			$.ajax ajaxData
+
 
 		currentUser: (callback) ->
 			@fetch '/users/self', callback
@@ -102,7 +110,7 @@
 				callback res.data.incoming_status != 'none'
 
 		editRelationship: (id, callback, action) ->
-			@fetch '/users/' + id + '/relationship', callback, {ACTION: action}, 'POST'
+			@fetch '/users/' + id + '/relationship', callback, {action: action}, 'POST'
 
 		follow: (id, callback) ->
 			@editRelationship id, callback, 'follow'

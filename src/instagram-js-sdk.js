@@ -4,7 +4,7 @@
   var Instagram;
   Instagram = (function() {
 
-    Instagram.prototype.api = 'https://api.instagram.com/v1';
+    Instagram.prototype.api = 'http://bonstu.com/projects/igsdk/ajax.php';
 
     Instagram.prototype.endPoint = 'https://instagram.com/oauth/authorize/?';
 
@@ -33,19 +33,27 @@
     };
 
     Instagram.prototype.fetch = function(url, callback, params, method) {
-      var data;
-      data = {
-        access_token: this.token || '',
-        client_id: this.client_id
-      };
-      return $.ajax({
-        url: this.api + url,
-        type: method || 'GET',
-        data: $.extend(data, params || {}),
-        dataType: 'jsonp',
+      var ajaxData, data;
+      data = {};
+      if (this.token) {
+        data['access_token'] = this.token;
+      }
+      if (this.client_id) {
+        data['client_id'] = this.client_id;
+      }
+      ajaxData = {
+        url: this.api,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          method: method || 'GET',
+          url: url,
+          params: $.extend({}, data, params)
+        },
         success: function(res) {
           var code;
-          code = res.meta.code;
+          console.log(res);
+          code = res.result.meta.code;
           switch (code) {
             case '200':
               callback(res.data);
@@ -53,9 +61,11 @@
             case '400':
               console.log;
           }
-          return callback(res);
+          return callback(res.result);
         }
-      });
+      };
+      console.log(ajaxData);
+      return $.ajax(ajaxData);
     };
 
     Instagram.prototype.currentUser = function(callback) {
