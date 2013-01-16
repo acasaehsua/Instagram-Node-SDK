@@ -60,7 +60,7 @@ IG.setOptions({
 `Current User`  
  - currentUser(fn) //return the basic info about the current auth user
  - getFeeds( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_feed ) )  
- - getLikes( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_feed_liked ) )  
+ - getLiked( fn, [params]( http://instagram.com/developer/endpoints/users/#get_users_feed_liked ) )  
  - getReqs( fn ) 
  - getIdByName(name, fn)  //return the user id or false if the user doesn't exist.
 

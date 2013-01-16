@@ -76,7 +76,7 @@
       return this.fetch('/users/self/feed', callback, params);
     };
 
-    Instagram.prototype.getLikes = function(callback, params) {
+    Instagram.prototype.getLiked = function(callback, params) {
       return this.fetch('/users/self/media/liked', callback, params);
     };
 
@@ -102,6 +102,18 @@
 
     Instagram.prototype.getUser = function(id, callback) {
       return this.fetch('/users/' + id, callback);
+    };
+
+    Instagram.prototype.getUserByName = function(name, callback) {
+      var self;
+      self = this;
+      return this.getIdByName(name, function(id) {
+        if (id) {
+          return self.getUser(id, function(res) {
+            return callback(res);
+          });
+        }
+      });
     };
 
     Instagram.prototype.getPhotos = function(id, callback, params) {
@@ -216,8 +228,8 @@
       return this.fetch('/tags/' + tagName + '/media/recent', callback, params);
     };
 
-    Instagram.prototype.searchTag = function(callback, params) {
-      return this.fetch('/tags/search', callback, params);
+    Instagram.prototype.searchTag = function(q, callback, params) {
+      return this.fetch('/tags/search?q=' + q, callback, params);
     };
 
     Instagram.prototype.getLocation = function(locId, callback, params) {

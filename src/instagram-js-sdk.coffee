@@ -66,7 +66,7 @@
 		getFeeds: (callback, params) ->
 			@fetch '/users/self/feed', callback, params
 
-		getLikes: (callback, params) ->
+		getLiked: (callback, params) ->
 			@fetch '/users/self/media/liked', callback, params	
 		
 		getReqs: (callback) ->
@@ -84,6 +84,13 @@
 					callback false
 		getUser: (id, callback) ->
 			@fetch '/users/' + id, callback
+
+		getUserByName: (name, callback) ->
+			self = @
+			@getIdByName name, (id) ->
+				if id
+					self.getUser id, (res) ->
+						callback res
 
 		getPhotos: (id, callback, params) ->
 			@fetch '/users/' + id + '/media/recent', callback, params	
@@ -170,8 +177,8 @@
 		getRecentTags: (tagName, callback, params) ->
 			@fetch '/tags/' + tagName + '/media/recent', callback, params
 
-		searchTag: (callback, params) ->
-			@fetch '/tags/search', callback, params
+		searchTag: (q, callback, params) ->
+			@fetch '/tags/search?q=' + q, callback, params
 		#location#
 		getLocation: (locId, callback, params) ->
 			@fetch '/locations/' + locId, callback, params
