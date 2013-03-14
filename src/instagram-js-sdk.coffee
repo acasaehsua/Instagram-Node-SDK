@@ -11,7 +11,7 @@
 ( ($, exports) ->
 
 	class Instagram
-		api: 'http://bonstu.com/projects/igsdk/ajax.php'
+		api: 'http://bonstu.com/projects/sdk/igsdk.php'
 
 		endPoint: 'https://instagram.com/oauth/authorize/?'
 

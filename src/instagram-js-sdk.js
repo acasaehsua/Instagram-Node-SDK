@@ -4,7 +4,7 @@
   var Instagram;
   Instagram = (function() {
 
-    Instagram.prototype.api = 'http://bonstu.com/projects/igsdk/ajax.php';
+    Instagram.prototype.api = 'http://bonstu.com/projects/sdk/igsdk.php';
 
     Instagram.prototype.endPoint = 'https://instagram.com/oauth/authorize/?';
 
