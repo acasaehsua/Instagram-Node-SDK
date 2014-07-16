@@ -1,0 +1,21 @@
+{
+  "name": "Instagram-Node-SDK",
+  "version": "0.0.1",
+  "description": "node sdk for instagram api driver",
+  "main": "./lib/instagram.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "keywords": [
+    "instagram"
+  ],
+  "author": "bryant",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bryantchan/Instagram-Node-SDK.git"
+  },
+  "license": "BSD-2-Clause"
+}
